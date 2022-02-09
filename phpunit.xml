@@ -24,4 +24,8 @@
             <directory suffix=".php">library</directory>
         </include>
     </coverage>
+
+    <logging>
+        <testdoxText outputFile="build/testdox.txt" />
+    </logging>
 </phpunit>
