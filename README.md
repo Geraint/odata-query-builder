@@ -1,4 +1,6 @@
 # OData Query Builder
+ 
+![Build and Test](https://github.com/Geraint/odata-query-builder/actions/workflows/build-and-test.yml/badge.svg)
 
 This is basic query builder for constructing OData URL's.
 
