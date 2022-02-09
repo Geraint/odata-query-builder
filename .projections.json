@@ -1,8 +1,8 @@
 {
-    "library/Geraint/*.php" : {
-        "alternate" : "tests/Geraint/{}Test.php"
+    "library/*.php" : {
+        "alternate" : "tests/{}Test.php"
     },
-    "tests/Geraint/*Test.php" : {
-        "alternate" : "library/Geraint/{}.php"
+    "tests/*Test.php" : {
+        "alternate" : "library/{}.php"
     }
 }
