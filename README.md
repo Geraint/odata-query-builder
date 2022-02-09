@@ -10,6 +10,7 @@ It is not intended to be a full implementation nor is it currently recommended f
 
 ```php
 <?php
+
 use ODataQueryBuilder\ODataQueryBuilder;
 
 $builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinServiceRW/", 'People');
@@ -19,7 +20,7 @@ $query = $build
     ->build();
 ```
     
-`$query` should not contain the following:
+`$query` should now contain the following:
 
 ```
 https://services.odata.org/V4/TripPinServiceRW/People?$filter=FirstName%20eq%20%27Scott%27&$format=json
