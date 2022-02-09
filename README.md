@@ -6,6 +6,29 @@ This is basic query builder for constructing OData URL's.
 
 It is not intended to be a full implementation nor is it currently recommended for production use.
 
+## Example Usage
+
+```php
+<?php
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinServiceRW/", 'People');
+$query = $build
+    ->filter("FirstName eq 'Scott'")
+    ->format('json')
+    ->build();
+```
+    
+`$query` should not contain the following:
+
+```
+https://services.odata.org/V4/TripPinServiceRW/People?$filter=FirstName%20eq%20%27Scott%27&$format=json
+```
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (GNU GPLv3).
+
 ## Alternatives
 
 - [PHP-OData-Query-Builder](https://github.com/rob893/PHP-OData-Query-Builder)
