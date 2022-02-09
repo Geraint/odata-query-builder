@@ -14,7 +14,8 @@
             "@phpcs"
         ],
         "phpunit": "phpunit --colors",
-        "phpcs": "phpcs --standard=PSR12 -p --colors library tests"
+        "phpcs": "phpcs --standard=PSR12 -p --colors library tests",
+        "phpcbf": "phpcbf --standard=PSR12 -p --colors library tests"
     }
 
 }
