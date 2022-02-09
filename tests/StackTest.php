@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @coversNothing
+ */
 final class StackTest extends TestCase
 {
     public function testPushAndPop(): void
