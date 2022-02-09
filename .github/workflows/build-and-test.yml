@@ -6,5 +6,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: composer install
-      - run: ./vendor/bin/phpunit
-      - run: ./vendor/bin/phpcs --standard=PSR12 -p --colors library tests
+      - run: composer qa
