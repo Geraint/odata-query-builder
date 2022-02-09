@@ -2,7 +2,7 @@
 
 This is basic query builder for constructing OData URL's.
 
-It is not intended to be a full implementation and is not currently recommended for production use.
+It is not intended to be a full implementation nor is it currently recommended for production use.
 
 ## Alternatives
 
