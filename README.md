@@ -1,8 +1,8 @@
-# OData Query Builder
+# OData Query Builder for PHP
  
 ![Build and Test](https://github.com/Geraint/odata-query-builder/actions/workflows/build-and-test.yml/badge.svg)
 
-This is basic query builder for constructing OData URL's.
+This is basic query builder with a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface) for constructing [OData](https://en.wikipedia.org/wiki/Open_Data_Protocol) URL's.
 
 It is not intended to be a full implementation nor is it currently recommended for production use.
 

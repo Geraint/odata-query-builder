@@ -6,7 +6,7 @@ namespace ODataQueryBuilder;
 
 class ODataQueryBuilder
 {
-    private string $serviceRootUrl;
+    private ServiceRootUrl $serviceRootUrl;
     private string $resourcePath;
     private ?Filter $filter = null;
     private ?Top $top = null;
@@ -15,7 +15,7 @@ class ODataQueryBuilder
 
     public function __construct(string $serviceRootUrl, string $resourcePath)
     {
-        $this->serviceRootUrl = $serviceRootUrl;
+        $this->serviceRootUrl = new ServiceRootUrl($serviceRootUrl);
         $this->resourcePath = $resourcePath;
     }
 
@@ -45,7 +45,7 @@ class ODataQueryBuilder
 
     public function build(): string
     {
-        return $this->serviceRootUrl . $this->resourcePath . $this->maybeMakeQueryString();
+        return $this->serviceRootUrl->build() . $this->resourcePath . $this->maybeMakeQueryString();
     }
 
     private function maybeMakeQueryString(): string
