@@ -40,6 +40,19 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
+    public function canBuildQueryWithSelect()
+    {
+        $sut = new ODataQueryBuilder('https://services.odata.org/V4/TripPinService/', 'Airports');
+        $expected = 'https://services.odata.org/V4/TripPinService/Airports?$select=Name%2C%20IcaoCode';
+        $actual = $sut
+            ->select('Name, IcaoCode')
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @test
+     */
     public function canBuildQueryWithTop()
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');

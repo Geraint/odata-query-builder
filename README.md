@@ -88,6 +88,25 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People('russelwhyte')?$expand=Friends
 ```
 
+### Using `select()`
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'Airports');
+$query = $builder
+    ->select('Name, IcaoCode')
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/Airports?$select=Name%2C%20IcaoCode
+```
+
 ### Using `top()` and `skip()`
 
 ```php
