@@ -8,6 +8,8 @@ It is not intended to be a full implementation nor is it currently recommended f
 
 ## Example Usage
 
+### Using `filter()` and `format()`
+
 ```php
 <?php
 
@@ -24,6 +26,25 @@ $query = $builder
 
 ```
 https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27&$format=json
+```
+### Using `top()` and `skip()`
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+$query = $builder
+    ->top(5)
+    ->skip(10)
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People?$top=5&$skip=10
 ```
 
 ## License

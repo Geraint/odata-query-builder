@@ -50,6 +50,17 @@ final class ODataQueryBuilderTest extends TestCase
         $this->assertSame($expected, $actual);
     }
 
+    public function canBuildQueryWithTopAndSkip()
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$top=5&$skip=10';
+        $actual = $sut
+            ->top(5)
+            ->skip(10)
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
      /**
      * @test
      */
