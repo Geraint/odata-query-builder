@@ -9,6 +9,7 @@ class ODataQueryBuilder
     private string $serviceRootUrl;
     private string $resourcePath;
     private ?Filter $filter = null;
+    private ?Top $top = null;
     private ?Format $format = null;
 
     public function __construct(string $serviceRootUrl, string $resourcePath)
@@ -20,6 +21,12 @@ class ODataQueryBuilder
     public function filter(string $value): self
     {
         $this->filter = new Filter($value);
+        return $this;
+    }
+
+    public function top(int $value): self
+    {
+        $this->top = new Top($value);
         return $this;
     }
 
@@ -37,15 +44,21 @@ class ODataQueryBuilder
     private function maybeMakeQueryString(): string
     {
         $queryOptions = [];
-        if (!is_null($this->filter)) {
-            $queryOptions[] = $this->filter->build();
+
+        $optionBulders = [
+            $this->filter,
+            $this->top,
+            $this->format,
+        ];
+
+        foreach ($optionBulders as $builder) {
+            if (!is_null($builder)) {
+                $queryOptions[] = $builder->build();
+            }
         }
-        if (!is_null($this->format)) {
-            $queryOptions[] = $this->format->build();
-        }
-        if (empty($queryOptions)) {
-            return '';
-        }
-        return '?' . implode('&', $queryOptions);
+
+        return empty($queryOptions)
+            ? ''
+            : '?' . implode('&', $queryOptions);
     }
 }
