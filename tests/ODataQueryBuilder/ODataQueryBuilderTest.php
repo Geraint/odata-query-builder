@@ -27,6 +27,19 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
+    public function canBuildQueryWithExpand()
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", "People('russelwhyte')");
+        $expected = "https://services.odata.org/V4/TripPinService/People('russelwhyte')?\$expand=Friends";
+        $actual = $sut
+            ->expand('Friends')
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @test
+     */
     public function canBuildQueryWithTop()
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');

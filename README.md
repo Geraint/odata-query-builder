@@ -8,6 +8,45 @@ It is not intended to be a full implementation nor is it currently recommended f
 
 ## Example Usage
 
+### Using `build()`
+
+This should be called last, and will return an encoded URL:
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$serviceRootUrl = 'https://services.odata.org/V4/TripPinService/';
+$resourcePath = 'People';
+$builder = new ODataQueryBuilder($serviceRootUrl, $resourcePath);
+$query = $builder->build();
+```
+
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People
+```
+
+You can include an entity ID in the resource path to get a URL for a single entity:
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$serviceRootUrl = 'https://services.odata.org/V4/TripPinService/';
+$resourcePath = "People('russelwhyte')";
+$builder = new ODataQueryBuilder($serviceRootUrl, $resourcePath);
+$query = $builder->build();
+```
+
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People('russelwhyte')
+```
+
 ### Using `filter()` and `format()`
 
 ```php
@@ -27,6 +66,28 @@ $query = $builder
 ```
 https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27&$format=json
 ```
+
+### Using `expand()`
+
+This is a very basic implementation.  If you try to do anything more advanced than just specifying a single related resource, you'll get URL encoding errors.
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", "People('russelwhyte')");
+$query = $builder
+    ->expand('Friends')
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People('russelwhyte')?$expand=Friends
+```
+
 ### Using `top()` and `skip()`
 
 ```php

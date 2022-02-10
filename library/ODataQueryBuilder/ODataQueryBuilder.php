@@ -9,6 +9,7 @@ class ODataQueryBuilder
     private ServiceRootUrl $serviceRootUrl;
     private string $resourcePath;
     private ?Filter $filter = null;
+    private ?Expand $expand = null;
     private ?Top $top = null;
     private ?Skip $skip = null;
     private ?Format $format = null;
@@ -22,6 +23,12 @@ class ODataQueryBuilder
     public function filter(string $value): self
     {
         $this->filter = new Filter($value);
+        return $this;
+    }
+
+    public function expand(string $value): self
+    {
+        $this->expand = new Expand($value);
         return $this;
     }
 
@@ -54,6 +61,7 @@ class ODataQueryBuilder
 
         $optionBulders = [
             $this->filter,
+            $this->expand,
             $this->top,
             $this->skip,
             $this->format,
