@@ -7,7 +7,7 @@ namespace ODataQueryBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \ODataQueryBuilder\ODataQueryBuilder
+ * @covers \ODataQueryBuilder\Skip
  */
 final class SkipTest extends TestCase
 {
