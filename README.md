@@ -6,6 +6,12 @@ This is basic query builder with a [fluent interface](https://en.wikipedia.org/w
 
 It is not intended to be a full implementation nor is it currently recommended for production use.
 
+## Install
+
+```
+composer require geraint/odata-query-builder:dev-master
+```
+
 ## Example
 
 ```php
@@ -16,6 +22,7 @@ use ODataQueryBuilder\ODataQueryBuilder;
 $serviceRootUrl = 'https://services.odata.org/V4/TripPinService/';
 $resourcePath = 'People';
 $builder = new ODataQueryBuilder($serviceRootUrl, $resourcePath);
+$query = $builder
     ->filter("FirstName eq 'Scott'")
     ->select('UserName, LastName, FirstName')
     ->orderBy('LastName asc')
