@@ -13,8 +13,8 @@ It is not intended to be a full implementation nor is it currently recommended f
 
 use ODataQueryBuilder\ODataQueryBuilder;
 
-$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinServiceRW/", 'People');
-$query = $build
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+$query = $builder
     ->filter("FirstName eq 'Scott'")
     ->format('json')
     ->build();
@@ -23,7 +23,7 @@ $query = $build
 `$query` should now contain the following:
 
 ```
-https://services.odata.org/V4/TripPinServiceRW/People?$filter=FirstName%20eq%20%27Scott%27&$format=json
+https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27&$format=json
 ```
 
 ## License

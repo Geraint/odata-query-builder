@@ -16,10 +16,8 @@ final class ODataQueryBuilderTest extends TestCase
      */
     public function canBuildQueryWithFilter()
     {
-        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinServiceRW/", 'People');
-        //phpcs:disable
-        $expected = 'https://services.odata.org/V4/TripPinServiceRW/People?$filter=FirstName%20eq%20%27Scott%27';
-        //phpcs:enable
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27';
         $actual = $sut
             ->filter("FirstName eq 'Scott'")
             ->build();
@@ -31,9 +29,9 @@ final class ODataQueryBuilderTest extends TestCase
      */
     public function canBuildQueryWithFilterAndFormat()
     {
-        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinServiceRW/", 'People');
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         //phpcs:disable
-        $expected = 'https://services.odata.org/V4/TripPinServiceRW/People?$filter=FirstName%20eq%20%27Scott%27&$format=json';
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27&$format=json';
         //phpcs:enable
         $actual = $sut
             ->filter("FirstName eq 'Scott'")
