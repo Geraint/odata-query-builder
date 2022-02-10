@@ -1,8 +1,14 @@
 {
+    "name": "geraint/odata-query-builder",
+    "description": "A simple OData Query Builder with fluent interface",
+    "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
           "ODataQueryBuilder\\": [ "library/ODataQueryBuilder", "tests/ODataQueryBuilder" ]
         }
+    },
+    "require": {
+        "php": ">=7.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
