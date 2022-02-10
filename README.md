@@ -6,7 +6,30 @@ This is basic query builder with a [fluent interface](https://en.wikipedia.org/w
 
 It is not intended to be a full implementation nor is it currently recommended for production use.
 
-## Example Usage
+## Example
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$serviceRootUrl = 'https://services.odata.org/V4/TripPinService/';
+$resourcePath = 'People';
+$builder = new ODataQueryBuilder($serviceRootUrl, $resourcePath);
+    ->filter("FirstName eq 'Scott'")
+    ->select('UserName, LastName, FirstName')
+    ->orderBy('LastName asc')
+    ->format('json')
+    ->build();
+```
+
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27&$select=UserName%2C%20LastName%2C%20FirstName&$orderby=LastName%20asc&$format=json
+```
+
+## Methods
 
 ### Using `build()`
 
@@ -47,7 +70,7 @@ $query = $builder->build();
 https://services.odata.org/V4/TripPinService/People('russelwhyte')
 ```
 
-### Using `filter()` and `format()`
+### Using `filter()`
 
 ```php
 <?php
@@ -57,14 +80,13 @@ use ODataQueryBuilder\ODataQueryBuilder;
 $builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
 $query = $builder
     ->filter("FirstName eq 'Scott'")
-    ->format('json')
     ->build();
 ```
     
 `$query` should now contain the following:
 
 ```
-https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27&$format=json
+https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27
 ```
 
 ### Using `expand()`
@@ -165,6 +187,43 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People?$count=true
 ```
 
+### Using `search()`
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+$query = $builder
+    ->search('United States')
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People?$search=United%20States
+```
+
+### Using `format()`
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+$query = $builder
+    ->format('json')
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People?$format=json
+```
 
 ## License
 

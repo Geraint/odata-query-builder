@@ -113,6 +113,19 @@ final class ODataQueryBuilderTest extends TestCase
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @test
+     */
+    public function canBuildQueryWithSearch()
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$search=United%20States';
+        $actual = $sut
+            ->search('United States')
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
      /**
      * @test
      */
@@ -124,6 +137,24 @@ final class ODataQueryBuilderTest extends TestCase
         //phpcs:enable
         $actual = $sut
             ->filter("FirstName eq 'Scott'")
+            ->format('json')
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function canBuildComplexQuery()
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        //phpcs:disable
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27&$select=UserName%2C%20LastName%2C%20FirstName&$orderby=LastName%20asc&$format=json';
+        //phpcs:enable
+        $actual = $sut
+            ->filter("FirstName eq 'Scott'")
+            ->select('UserName, LastName, FirstName')
+            ->orderBy('LastName asc')
             ->format('json')
             ->build();
         $this->assertSame($expected, $actual);
