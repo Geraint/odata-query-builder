@@ -11,6 +11,7 @@ class ODataQueryBuilder
     private ?Filter $filter = null;
     private ?Expand $expand = null;
     private ?Select $select = null;
+    private ?OrderBy $orderBy = null;
     private ?Top $top = null;
     private ?Skip $skip = null;
     private ?Format $format = null;
@@ -36,6 +37,12 @@ class ODataQueryBuilder
     public function select(string $value): self
     {
         $this->select = new Select($value);
+        return $this;
+    }
+
+    public function orderBy(string $value): self
+    {
+        $this->orderBy = new OrderBy($value);
         return $this;
     }
 
@@ -70,6 +77,7 @@ class ODataQueryBuilder
             $this->filter,
             $this->expand,
             $this->select,
+            $this->orderBy,
             $this->top,
             $this->skip,
             $this->format,

@@ -53,6 +53,19 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
+    public function canBuildQueryWithOrderBy()
+    {
+        $sut = new ODataQueryBuilder('https://services.odata.org/V4/TripPinService/', 'Airports');
+        $expected = 'https://services.odata.org/V4/TripPinService/Airports?$orderby=Name%20desc';
+        $actual = $sut
+            ->orderBy('Name desc')
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @test
+     */
     public function canBuildQueryWithTop()
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');

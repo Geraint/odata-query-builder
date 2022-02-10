@@ -107,6 +107,25 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/Airports?$select=Name%2C%20IcaoCode
 ```
 
+### Using `orderBy()`
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'Airports');
+$query = $builder
+    ->orderBy('Name desc')
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/Airports?$orderby=Name%20desc
+```
+
 ### Using `top()` and `skip()`
 
 ```php
