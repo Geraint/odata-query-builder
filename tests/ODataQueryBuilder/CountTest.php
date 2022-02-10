@@ -7,17 +7,17 @@ namespace ODataQueryBuilder;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \ODataQueryBuilder\Top
+ * @covers \ODataQueryBuilder\Count
  */
-final class TopTest extends TestCase
+final class CountTest extends TestCase
 {
     /**
      * @test
      */
-    public function canSetTopValue()
+    public function canSetCountValue()
     {
-        $sut      = new Top(99);
-        $expected = '$top=99';
+        $sut      = new Count(true);
+        $expected = '$count=true';
         $actual   = $sut->build();
         $this->assertSame($expected, $actual);
     }

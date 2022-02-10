@@ -100,6 +100,19 @@ final class ODataQueryBuilderTest extends TestCase
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @test
+     */
+    public function canBuildQueryWithCount()
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$count=true';
+        $actual = $sut
+            ->count(true)
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
      /**
      * @test
      */

@@ -14,6 +14,7 @@ class ODataQueryBuilder
     private ?OrderBy $orderBy = null;
     private ?Top $top = null;
     private ?Skip $skip = null;
+    private ?Count $count = null;
     private ?Format $format = null;
 
     public function __construct(string $serviceRootUrl, string $resourcePath)
@@ -58,6 +59,12 @@ class ODataQueryBuilder
         return $this;
     }
 
+    public function count(bool $value): self
+    {
+        $this->count = new Count($value);
+        return $this;
+    }
+
     public function format(string $value): self
     {
         $this->format = new Format($value);
@@ -80,6 +87,7 @@ class ODataQueryBuilder
             $this->orderBy,
             $this->top,
             $this->skip,
+            $this->count,
             $this->format,
         ];
 

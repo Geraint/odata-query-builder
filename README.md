@@ -146,6 +146,26 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People?$top=5&$skip=10
 ```
 
+### Using `count()`
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+$query = $builder
+    ->count(true)
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People?$count=true
+```
+
+
 ## License
 
 See the [LICENSE](LICENSE.md) file for license rights and limitations (GNU GPLv3).
