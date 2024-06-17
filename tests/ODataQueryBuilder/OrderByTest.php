@@ -14,7 +14,7 @@ final class OrderByTest extends TestCase
     /**
      * @test
      */
-    public function canEncodeOrdersByValue()
+    public function canEncodeOrdersByValue(): void
     {
         $sut      = new OrderBy('EndsAt desc');
         $expected = '$orderby=EndsAt%20desc';

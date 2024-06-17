@@ -14,7 +14,7 @@ final class SelectTest extends TestCase
     /**
      * @test
      */
-    public function canEncodeSelectValue()
+    public function canEncodeSelectValue(): void
     {
         $sut      = new Select('Name, IcaoCode');
         $expected = '$select=Name%2C%20IcaoCode';

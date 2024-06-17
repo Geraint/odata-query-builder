@@ -14,7 +14,7 @@ final class SkipTest extends TestCase
     /**
      * @test
      */
-    public function canSetSkipValue()
+    public function canSetSkipValue(): void
     {
         $sut      = new Skip(99);
         $expected = '$skip=99';

@@ -1,0 +1,11 @@
+parameters:
+    level: max
+    paths:
+        - library
+        - tests
+    exceptions:
+        uncheckedExceptionRegexes:
+            - '#^PHPUnit\\Framework\\#'
+            - '#^SebastianBergmann\\#'
+        check:
+            missingCheckedExceptionInThrows: true

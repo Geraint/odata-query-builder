@@ -14,7 +14,7 @@ final class FormatTest extends TestCase
     /**
      * @test
      */
-    public function canSetFormatValue()
+    public function canSetFormatValue(): void
     {
         $sut      = new Format("json");
         $expected = '$format=json';

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace ODataQueryBuilder;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 class ODataQueryBuilder
 {
     private ServiceRootUrl $serviceRootUrl;

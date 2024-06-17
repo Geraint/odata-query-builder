@@ -14,7 +14,7 @@ final class ServiceRootUrlTest extends TestCase
     /**
      * @test
      */
-    public function canBuildAsIs()
+    public function canBuildAsIs(): void
     {
         $sut      = new ServiceRootUrl("https://services.odata.org/V4/TripPinService/");
         $expected = 'https://services.odata.org/V4/TripPinService/';
@@ -25,7 +25,7 @@ final class ServiceRootUrlTest extends TestCase
     /**
      * @test
      */
-    public function willAppendTrailingSlashIfMissing()
+    public function willAppendTrailingSlashIfMissing(): void
     {
         $sut      = new ServiceRootUrl("https://services.odata.org/V4/TripPinService");
         $expected = 'https://services.odata.org/V4/TripPinService/';

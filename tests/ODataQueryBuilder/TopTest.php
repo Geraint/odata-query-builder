@@ -14,7 +14,7 @@ final class TopTest extends TestCase
     /**
      * @test
      */
-    public function canSetTopValue()
+    public function canSetTopValue(): void
     {
         $sut      = new Top(99);
         $expected = '$top=99';

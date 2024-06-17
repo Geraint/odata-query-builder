@@ -11,17 +11,25 @@
         "php": ">=7.4"
     },
     "require-dev": {
+        "phpmd/phpmd": "^2.15",
+        "phpstan/phpstan": "^1.11",
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "3.*"
     },
     "scripts": {
         "qa": [
             "@phpunit",
-            "@phpcs"
+            "@phpcs",
+            "@phpmd",
+            "@phpstan"
         ],
         "phpunit": "phpunit --colors",
         "phpcs": "phpcs --standard=PSR12 -p --colors library tests",
+        "phpmd": "phpmd library/,tests/ text phpmd.xml",
+        "phpstan": "phpstan",
         "phpcbf": "phpcbf --standard=PSR12 -p --colors library tests"
+    },
+    "config": {
+        "sort-packages": true
     }
-
 }

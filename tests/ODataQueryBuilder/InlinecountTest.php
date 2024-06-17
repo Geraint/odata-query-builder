@@ -14,7 +14,7 @@ final class InlinecountTest extends TestCase
     /**
      * @test
      */
-    public function canEncodeInlinecountValue()
+    public function canEncodeInlinecountValue(): void
     {
         $sut      = new Inlinecount("allpages");
         $expected = '$inlinecount=allpages';

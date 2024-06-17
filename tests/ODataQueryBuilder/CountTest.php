@@ -14,7 +14,7 @@ final class CountTest extends TestCase
     /**
      * @test
      */
-    public function canSetCountValue()
+    public function canSetCountValue(): void
     {
         $sut      = new Count(true);
         $expected = '$count=true';

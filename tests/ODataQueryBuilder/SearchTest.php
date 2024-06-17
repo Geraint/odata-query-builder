@@ -14,7 +14,7 @@ final class SearchTest extends TestCase
     /**
      * @test
      */
-    public function canEncodeSearchValue()
+    public function canEncodeSearchValue(): void
     {
         $sut      = new Search('United States');
         $expected = '$search=United%20States';

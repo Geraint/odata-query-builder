@@ -8,13 +8,14 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \ODataQueryBuilder\ODataQueryBuilder
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 final class ODataQueryBuilderTest extends TestCase
 {
     /**
      * @test
      */
-    public function canBuildQueryWithFilter()
+    public function canBuildQueryWithFilter(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         $expected = 'https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27';
@@ -27,7 +28,7 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function canBuildQueryWithExpand()
+    public function canBuildQueryWithExpand(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", "People('russelwhyte')");
         $expected = "https://services.odata.org/V4/TripPinService/People('russelwhyte')?\$expand=Friends";
@@ -40,7 +41,7 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function canBuildQueryWithSelect()
+    public function canBuildQueryWithSelect(): void
     {
         $sut = new ODataQueryBuilder('https://services.odata.org/V4/TripPinService/', 'Airports');
         $expected = 'https://services.odata.org/V4/TripPinService/Airports?$select=Name%2C%20IcaoCode';
@@ -53,7 +54,7 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function canBuildQueryWithOrderBy()
+    public function canBuildQueryWithOrderBy(): void
     {
         $sut = new ODataQueryBuilder('https://services.odata.org/V4/TripPinService/', 'Airports');
         $expected = 'https://services.odata.org/V4/TripPinService/Airports?$orderby=Name%20desc';
@@ -66,7 +67,7 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function canBuildQueryWithTop()
+    public function canBuildQueryWithTop(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         $expected = 'https://services.odata.org/V4/TripPinService/People?$top=2';
@@ -79,7 +80,7 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function canBuildQueryWithSkip()
+    public function canBuildQueryWithSkip(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         $expected = 'https://services.odata.org/V4/TripPinService/People?$skip=2';
@@ -89,7 +90,7 @@ final class ODataQueryBuilderTest extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function canBuildQueryWithTopAndSkip()
+    public function canBuildQueryWithTopAndSkip(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         $expected = 'https://services.odata.org/V4/TripPinService/People?$top=5&$skip=10';
@@ -103,7 +104,7 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function canBuildQueryWithCount()
+    public function canBuildQueryWithCount(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         $expected = 'https://services.odata.org/V4/TripPinService/People?$count=true';
@@ -116,7 +117,7 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function canBuildQueryWithSearch()
+    public function canBuildQueryWithSearch(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         $expected = 'https://services.odata.org/V4/TripPinService/People?$search=United%20States';
@@ -142,7 +143,7 @@ final class ODataQueryBuilderTest extends TestCase
      /**
      * @test
      */
-    public function canBuildQueryWithFilterAndFormat()
+    public function canBuildQueryWithFilterAndFormat(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         //phpcs:disable
@@ -158,7 +159,7 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function canBuildComplexQuery()
+    public function canBuildComplexQuery(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
         //phpcs:disable

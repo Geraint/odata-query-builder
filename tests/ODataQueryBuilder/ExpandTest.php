@@ -14,7 +14,7 @@ final class ExpandTest extends TestCase
     /**
      * @test
      */
-    public function canSetExpandValue()
+    public function canSetExpandValue(): void
     {
         $sut      = new Expand('Friends');
         $expected = '$expand=Friends';
