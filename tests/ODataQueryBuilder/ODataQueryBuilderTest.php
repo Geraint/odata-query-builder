@@ -126,6 +126,19 @@ final class ODataQueryBuilderTest extends TestCase
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @test
+     */
+    public function canBuildWithInlinecount(): void
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$inlinecount=allpages';
+        $actual = $sut
+            ->inlinecount('allpages')
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
      /**
      * @test
      */

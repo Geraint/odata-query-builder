@@ -16,6 +16,7 @@ class ODataQueryBuilder
     private ?Skip $skip = null;
     private ?Count $count = null;
     private ?Search $search = null;
+    private ?Inlinecount $inlinecount = null;
     private ?Format $format = null;
 
     public function __construct(string $serviceRootUrl, string $resourcePath)
@@ -72,6 +73,12 @@ class ODataQueryBuilder
         return $this;
     }
 
+    public function inlinecount(string $value): self
+    {
+        $this->inlinecount = new Inlinecount($value);
+        return $this;
+    }
+
     public function format(string $value): self
     {
         $this->format = new Format($value);
@@ -96,6 +103,7 @@ class ODataQueryBuilder
             $this->skip,
             $this->count,
             $this->search,
+            $this->inlinecount,
             $this->format,
         ];
 
