@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ODataQueryBuilder;
 
 /**
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class ODataQueryBuilder
@@ -17,6 +18,8 @@ class ODataQueryBuilder
     private ?OrderBy $orderBy = null;
     private ?Top $top = null;
     private ?Skip $skip = null;
+    private ?First $first = null;
+    private ?After $after = null;
     private ?Count $count = null;
     private ?Search $search = null;
     private ?Inlinecount $inlinecount = null;
@@ -64,6 +67,18 @@ class ODataQueryBuilder
         return $this;
     }
 
+    public function first(int $value): self
+    {
+        $this->first = new First($value);
+        return $this;
+    }
+
+    public function after(int $value): self
+    {
+        $this->after = new After($value);
+        return $this;
+    }
+
     public function count(bool $value): self
     {
         $this->count = new Count($value);
@@ -104,6 +119,8 @@ class ODataQueryBuilder
             $this->orderBy,
             $this->top,
             $this->skip,
+            $this->first,
+            $this->after,
             $this->count,
             $this->search,
             $this->inlinecount,

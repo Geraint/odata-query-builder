@@ -193,3 +193,32 @@ $query = $builder
 ```
 https://services.odata.org/V4/TripPinService/People?$format=json
 ```
+
+## Using `$first` and `$after`
+
+[Azure Data API Builder](https://learn.microsoft.com/en-gb/azure/data-api-builder/)'s REST endpoints uses:
+
+- `$first` instead of `$top`
+- `$after` instead of `$skip`
+
+([documentation](https://learn.microsoft.com/en-gb/azure/data-api-builder/rest#first-and-after)).
+
+You can do this:
+
+```php
+<?php
+
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+$query = $builder
+    ->first(5)
+    ->after(10)
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People?$first=5&$after=10
+```

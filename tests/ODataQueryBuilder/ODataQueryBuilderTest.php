@@ -90,6 +90,9 @@ final class ODataQueryBuilderTest extends TestCase
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @test
+     */
     public function canBuildQueryWithTopAndSkip(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
@@ -97,6 +100,46 @@ final class ODataQueryBuilderTest extends TestCase
         $actual = $sut
             ->top(5)
             ->skip(10)
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function canBuildQueryWithFirst(): void
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$first=2';
+        $actual = $sut
+            ->first(2)
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function canBuildQueryWithAfter(): void
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$after=2';
+        $actual = $sut
+            ->after(2)
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function canBuildQueryWithFirstAndAfter(): void
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$first=5&$after=10';
+        $actual = $sut
+            ->first(5)
+            ->after(10)
             ->build();
         $this->assertSame($expected, $actual);
     }
