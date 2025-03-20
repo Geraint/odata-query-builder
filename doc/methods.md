@@ -194,9 +194,9 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People?$format=json
 ```
 
-## Using `$first` and `$after`
+## Using `first()` and `after()`
 
-[Azure Data API Builder](https://learn.microsoft.com/en-gb/azure/data-api-builder/)'s REST endpoints uses:
+[Azure Data API Builder](https://learn.microsoft.com/en-gb/azure/data-api-builder/)'s REST endpoints use:
 
 - `$first` instead of `$top`
 - `$after` instead of `$skip`
