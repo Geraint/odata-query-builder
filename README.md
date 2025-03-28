@@ -9,7 +9,7 @@ It is not intended to be a full implementation but, if your needs are modest, th
 ## Install
 
 ```
-composer require geraint/odata-query-builder:dev-master
+composer require geraint/odata-query-builder
 ```
 
 ## Example
