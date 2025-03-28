@@ -199,7 +199,7 @@ https://services.odata.org/V4/TripPinService/People?$format=json
 [Azure Data API Builder](https://learn.microsoft.com/en-gb/azure/data-api-builder/)'s REST endpoints use:
 
 - `$first` instead of `$top`
-- `$after` instead of `$skip`
+- `$after` instead of `$skip` (although this cursor based pagination, not index-based pagination)
 
 ([documentation](https://learn.microsoft.com/en-gb/azure/data-api-builder/rest#first-and-after)).
 
@@ -213,12 +213,12 @@ use ODataQueryBuilder\ODataQueryBuilder;
 $builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
 $query = $builder
     ->first(5)
-    ->after(10)
+    ->after('foobar-continuation-token')
     ->build();
 ```
     
 `$query` should now contain the following:
 
 ```
-https://services.odata.org/V4/TripPinService/People?$first=5&$after=10
+https://services.odata.org/V4/TripPinService/People?$first=5&$after=foobar-continuation-token
 ```

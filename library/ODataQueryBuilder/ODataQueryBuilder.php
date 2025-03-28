@@ -73,7 +73,7 @@ class ODataQueryBuilder
         return $this;
     }
 
-    public function after(int $value): self
+    public function after(string $value): self
     {
         $this->after = new After($value);
         return $this;

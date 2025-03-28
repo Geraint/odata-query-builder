@@ -16,8 +16,8 @@ final class AfterTest extends TestCase
      */
     public function canSetAfterValue(): void
     {
-        $sut      = new After(99);
-        $expected = '$after=99';
+        $sut      = new After('foobar-continuation-token');
+        $expected = '$after=foobar-continuation-token';
         $actual   = $sut->build();
         $this->assertSame($expected, $actual);
     }

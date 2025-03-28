@@ -123,9 +123,9 @@ final class ODataQueryBuilderTest extends TestCase
     public function canBuildQueryWithAfter(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
-        $expected = 'https://services.odata.org/V4/TripPinService/People?$after=2';
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$after=foobar-continuation-token';
         $actual = $sut
-            ->after(2)
+            ->after('foobar-continuation-token')
             ->build();
         $this->assertSame($expected, $actual);
     }
@@ -136,10 +136,10 @@ final class ODataQueryBuilderTest extends TestCase
     public function canBuildQueryWithFirstAndAfter(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
-        $expected = 'https://services.odata.org/V4/TripPinService/People?$first=5&$after=10';
+        $expected = 'https://services.odata.org/V4/TripPinService/People?$first=5&$after=foobar-continuation-token';
         $actual = $sut
             ->first(5)
-            ->after(10)
+            ->after('foobar-continuation-token')
             ->build();
         $this->assertSame($expected, $actual);
     }
