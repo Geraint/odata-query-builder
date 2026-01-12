@@ -22,6 +22,7 @@ class ODataQueryBuilder
     private ?After $after = null;
     private ?Count $count = null;
     private ?Search $search = null;
+    private ?Apply $apply = null;
     private ?Inlinecount $inlinecount = null;
     private ?Format $format = null;
 
@@ -91,6 +92,12 @@ class ODataQueryBuilder
         return $this;
     }
 
+    public function apply(string $value): self
+    {
+        $this->apply = new Apply($value);
+        return $this;
+    }
+
     public function inlinecount(string $value): self
     {
         $this->inlinecount = new Inlinecount($value);
@@ -123,6 +130,7 @@ class ODataQueryBuilder
             $this->after,
             $this->count,
             $this->search,
+            $this->apply,
             $this->inlinecount,
             $this->format,
         ];

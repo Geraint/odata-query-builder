@@ -1,6 +1,22 @@
 # Methods
 
-## Using `build()`
+<!-- toc -->
+
+- [`build()`](#build)
+- [`filter()`](#filter)
+- [`expand()`](#expand)
+- [`select()`](#select)
+- [`orderBy()`](#orderby)
+- [`top()` and `skip()`](#top-and-skip)
+- [`count()`](#count)
+- [`search()`](#search)
+- [`apply()`](#apply)
+- [`format()`](#format)
+- [`first()` and `after()`](#first-and-after)
+
+<!-- tocstop -->
+
+## `build()`
 
 This should be called last, and will return an encoded URL:
 
@@ -39,7 +55,7 @@ $query = $builder->build();
 https://services.odata.org/V4/TripPinService/People('russelwhyte')
 ```
 
-## Using `filter()`
+## `filter()`
 
 ```php
 <?php
@@ -58,7 +74,7 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People?$filter=FirstName%20eq%20%27Scott%27
 ```
 
-## Using `expand()`
+## `expand()`
 
 This is a very basic implementation.  If you try to do anything more advanced than just specifying a single related resource, you'll get URL encoding errors.
 
@@ -79,7 +95,7 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People('russelwhyte')?$expand=Friends
 ```
 
-## Using `select()`
+## `select()`
 
 ```php
 <?php
@@ -98,7 +114,7 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/Airports?$select=Name%2C%20IcaoCode
 ```
 
-## Using `orderBy()`
+## `orderBy()`
 
 ```php
 <?php
@@ -117,7 +133,7 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/Airports?$orderby=Name%20desc
 ```
 
-## Using `top()` and `skip()`
+## `top()` and `skip()`
 
 ```php
 <?php
@@ -137,7 +153,7 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People?$top=5&$skip=10
 ```
 
-## Using `count()`
+## `count()`
 
 ```php
 <?php
@@ -156,7 +172,7 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People?$count=true
 ```
 
-## Using `search()`
+## `search()`
 
 ```php
 <?php
@@ -175,7 +191,25 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People?$search=United%20States
 ```
 
-## Using `format()`
+## `apply()`
+
+```php
+<?php
+use ODataQueryBuilder\ODataQueryBuilder;
+
+$builder = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+$query = $builder
+    ->apply('groupby((LastName))')
+    ->build();
+```
+    
+`$query` should now contain the following:
+
+```
+https://services.odata.org/V4/TripPinService/People?$apply=groupby%28%28LastName%29%29
+```
+
+## `format()`
 
 ```php
 <?php
@@ -194,7 +228,7 @@ $query = $builder
 https://services.odata.org/V4/TripPinService/People?$format=json
 ```
 
-## Using `first()` and `after()`
+## `first()` and `after()`
 
 [Azure Data API Builder](https://learn.microsoft.com/en-gb/azure/data-api-builder/)'s REST endpoints use:
 

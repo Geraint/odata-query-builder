@@ -173,6 +173,20 @@ final class ODataQueryBuilderTest extends TestCase
     /**
      * @test
      */
+    public function canBuildQueryWithApply(): void
+    {
+        $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
+        $expected =
+            'https://services.odata.org/V4/TripPinService/People?$apply=groupby%28%28stndrdAttndcModeTypeNr%29%29';
+        $actual = $sut
+            ->apply('groupby((stndrdAttndcModeTypeNr))')
+            ->build();
+        $this->assertSame($expected, $actual);
+    }
+
+    /**
+     * @test
+     */
     public function canBuildWithInlinecount(): void
     {
         $sut = new ODataQueryBuilder("https://services.odata.org/V4/TripPinService/", 'People');
